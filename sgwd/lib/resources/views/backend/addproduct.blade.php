@@ -26,6 +26,15 @@
 										<input required type="text" name="name" class="form-control">
 									</div>
 									<div class="form-group" >
+										<label>Ảnh sản phẩm</label>
+										<input required id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
+										<img id="avatar" class="thumbnail" width="300px" src="img/new_seo-10-512.png">
+									</div>
+									<div class="form-group" >
+										<label>Giá sản phẩm</label>
+										<input required type="number" name="price" class="form-control">
+									</div>
+									<div class="form-group" >
 										<label>Bảo hành</label>
 										<input required type="text" name="warranty" class="form-control">
 									</div>
@@ -57,7 +66,7 @@
 										<label>Danh mục</label>
 										<select required name="cate" class="form-control">
 											@foreach($catelist as $cate)
-											<option value="{{$cate->id}}">{{$cate->cate_name}}</option>
+											<option value="{{$cate->cate_id}}">{{$cate->cate_name}}</option>
 											@endforeach
 					                    </select>
 									</div>

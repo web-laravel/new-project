@@ -18,11 +18,6 @@
                             @include('errors.note')
                             <div class="row" style="margin-bottom:40px">
                                 <div class="col-xs-8">
-                                    @foreach($prod_id as $pro)
-                                    <div class="form-group" >
-                                        <input required type="hidden" name="id" value="{{$pro->id}}" class="form-control">
-                                    </div>
-                                    @endforeach
                                     <div class="form-group" >
                                         <label>Giá sản phẩm</label>
                                         <input required type="number" name="price" class="form-control">
@@ -41,7 +36,7 @@
                                         <input required type="text" name="color" class="form-control">
                                     </div>
                                     <input type="submit" name="submit" value="Thêm" class="btn btn-primary">
-                                    <a href="#" class="btn btn-danger">Hủy bỏ</a>
+                                    <a href="{{asset('admin/product/detail/'.$id)}}" class="btn btn-danger">Hủy bỏ</a>
                                 </div>
                             </div>
                             {{csrf_field()}}

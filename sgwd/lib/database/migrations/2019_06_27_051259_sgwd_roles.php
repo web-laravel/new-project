@@ -14,7 +14,7 @@ class SgwdRoles extends Migration
     public function up()
     {
         Schema::create('sgwd_roles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('role_id');
             $table->string('role');
             $table->timestamps();
         });

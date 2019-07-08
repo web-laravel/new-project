@@ -8,6 +8,6 @@ class Product extends Model
 {
     //
     protected $table = 'sgwd_products';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'prod_id';
     protected $guarded = [];
 }

@@ -14,7 +14,7 @@ class SgwdAddress extends Migration
     public function up()
     {
         Schema::create('sgwd_address', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('address_id');
             $table->string('address');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')

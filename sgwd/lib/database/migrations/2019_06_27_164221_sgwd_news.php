@@ -14,7 +14,7 @@ class SgwdNews extends Migration
     public function up()
     {
         Schema::create('sgwd_news', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('news_id');
             $table->string('news_title');
             $table->text('news_description');
             $table->text('news_detail');

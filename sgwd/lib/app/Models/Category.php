@@ -8,6 +8,6 @@ class Category extends Model
 {
     //
     protected $table = 'sgwd_categories';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'cate_id';
     protected $guarded = [];
 }

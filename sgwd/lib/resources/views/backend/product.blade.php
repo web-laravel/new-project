@@ -21,11 +21,14 @@
 									<thead>
 										<tr class="bg-primary">
 											<th>Mã sản phẩm</th>
-											<th width="30%">Tên Sản phẩm</th>
-											<th>Giá sản phẩm</th>
-											<th width="20%">Ảnh sản phẩm</th>
+											<th width="10%">Tên Sản phẩm</th>
+											<th>Bảo hành</th>
+											<th>Trạng thái</th>
+											<th width="30%">Miêu tả</th>
 											<th>Danh mục</th>
-											<th>Tùy chọn</th>
+											<th>Loại</th>
+											<th>Ảnh sản phẩm</th>
+											<th width="20%">Tùy chọn</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -33,14 +36,19 @@
 										<tr>
 											<td>{{$p->prod_code}}</td>
 											<td>{{$p->prod_name}}</td>
-											<td>{{number_format($p->prod_price,'0',',','.')}}</td>
-											<td>
-												<img width="200px" src="{{asset('lib/storage/app/avatar/'.$p->prod_image)}}" class="thumbnail">
-											</td>
+											<td>{{$p->prod_warranty}}</td>
+											<td>@if($p->prod_status == 1) Còn hàng @else Hết hàng @endif</td>
+											<td>{!!$p->prod_description!!}</td>
 											<td>{{$p->cate_name}}</td>
+											<td>@if ($p->prod_doororwindow == 1) Cửa đi @else Cửa sổ @endif</td>
 											<td>
-												<a href="{{asset('admin/product/edit')}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-												<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
+												<img width="200px" src="{{asset('lib/storage/app/avatar/'.$p->prod_img)}}"
+													 class="thumbnail">
+											</td>
+											<td>
+												<a href="{{asset('admin/product/detail/'.$p->prod_id)}}" class="btn btn-primary">Thêm chi tiết sản phẩm</a>
+												<a href="{{asset('admin/product/edit/'.$p->prod_id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
+												<a href="{{asset('admin/product/delete/'.$p->prod_id)}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
 											</td>
 										</tr>
 										@endforeach

@@ -14,7 +14,7 @@ class SgwdBills extends Migration
     public function up()
     {
         Schema::create('sgwd_bills', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('bill_id');
             $table->integer('user_id')->unsigned();
             $table->double('bill_total_price');
             $table->dateTime('bill_daytime_book');

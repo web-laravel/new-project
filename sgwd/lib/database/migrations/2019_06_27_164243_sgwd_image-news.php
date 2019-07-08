@@ -14,11 +14,11 @@ class SgwdImageNews extends Migration
     public function up()
     {
         Schema::create('sgwd_image-news', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('image_news_id');
             $table->string('image');
             $table->integer('news_id')->unsigned();
             $table->foreign('news_id')
-                ->references('id')
+                ->references('news_id')
                 ->on('sgwd_news')
                 ->onDelete('cascade');
             $table->timestamps();

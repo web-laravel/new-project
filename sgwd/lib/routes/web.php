@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'FrontendController@getHome');
+
+Route::get('category/{id}.html', 'FrontendController@getCategory');
+
+Route::get('test', function () {
+    return view('frontend.product-details');
 });
 
 Route::group(['namespace' => 'Admin'], function () {
@@ -24,6 +28,10 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('logout', 'HomeController@getlogout');
     Route::group(['prefix' => 'admin', 'middleware' => 'CheckLogedOut'], function () {
         Route::get('home', 'HomeController@getHome');
+
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('/', 'UserController@getUser');
+        });
 
         Route::group(['prefix' => 'category'], function () {
             Route::get('/', 'CategoryController@getCategory');
@@ -41,13 +49,32 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('add', 'ProductController@getAddProduct');
             Route::post('add', 'ProductController@postAddProduct');
 
-            Route::get('add/detail', 'ProductController@getAddDetailProduct');
-            Route::post('add/detail', 'ProductController@postAddDetailProduct');
-
             Route::get('edit/{id}', 'ProductController@getEditProduct');
             Route::post('edit/{id}', 'ProductController@postEditProduct');
 
             Route::get('delete/{id}', 'ProductController@getDeleteProduct');
+
+            Route::group(['prefix' => 'detail/{id_prod}'], function () {
+                Route::get('/', 'ProductController@getProductDetail');
+
+                Route::get('add', 'ProductController@getAddDetailProduct');
+                Route::post('add', 'ProductController@postAddDetailProduct');
+
+                Route::get('edit/{id_prod_detail}', 'ProductController@getEditDetailProduct');
+                Route::post('edit/{id_prod_detail}', 'ProductController@postEditDetailProduct');
+
+                Route::get('delete/{id_prod_detail}', 'ProductController@getDeleteDetailProduct');
+            });
+        });
+
+        Route::group(['prefix' => 'category'], function () {
+            Route::get('/', 'CategoryController@getCategory');
+            Route::post('/', 'CategoryController@postCategory');
+
+            Route::get('edit/{id}', 'CategoryController@getEditCategory');
+            Route::post('edit/{id}', 'CategoryController@postEditCategory');
+
+            Route::get('delete/{id}', 'CategoryController@getDeleteCategory');
         });
     });
 });
