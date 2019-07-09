@@ -13,7 +13,7 @@ class CategoryController extends Controller
     //
     public function getCategory() {
         $data['catelist'] = Category::all();
-        return view('backend.category', $data);
+        return view('backend.category.category', $data);
     }
 
     public function postCategory(AddCategoryRequest $request) {
@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
     public function getEditCategory($id) {
         $data['cate'] = Category::find($id);
-        return view('backend.editcategory', $data);
+        return view('backend.category.editcategory', $data);
     }
 
     public function postEditCategory(EditCategoryRequest $request, $id) {

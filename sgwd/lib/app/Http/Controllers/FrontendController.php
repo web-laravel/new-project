@@ -11,12 +11,13 @@ class FrontendController extends Controller
     //
     public function getHome() {
         $data['prodlist'] = Product::orderBy('prod_id', 'desc')->paginate(8)->all();
-        return view('frontend.product', $data);
+        $data['catelist'] = Category::all();
+        return view('frontend.product.product', $data);
     }
 
     public function getCategory($id) {
         $data['items'] = Product::where('cate_id',$id)->orderBy('prod_id','desc')->paginate(8);
         $data['cateName'] = Category::find($id);
-        return view('frontend.category',$data);
+        return view('frontend.category.category_detail',$data);
     }
 }

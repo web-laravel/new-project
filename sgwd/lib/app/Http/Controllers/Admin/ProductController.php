@@ -22,14 +22,14 @@ class ProductController extends Controller
         $data['productlist'] = DB::table('sgwd_products')
             ->join('sgwd_categories', 'sgwd_products.cate_id', '=', 'sgwd_categories.cate_id')
             ->orderBy('prod_id', 'desc')->get();
-        return view('backend.product', $data);
+        return view('backend.product.product', $data);
 //        dd($data);
     }
 
     public function getAddProduct()
     {
         $data['catelist'] = Category::all();
-        return view('backend.addproduct', $data);
+        return view('backend.product.addproduct', $data);
     }
 
     public function postAddProduct(AddProductRequest $request)
@@ -55,7 +55,7 @@ class ProductController extends Controller
     {
         $data['catelist'] = Category::all();
         $data['prod'] = Product::find($id);
-        return view('backend.editproduct', $data);
+        return view('backend.product.editproduct', $data);
     }
 
     public function postEditProduct(Request $request, $id)
@@ -87,13 +87,13 @@ class ProductController extends Controller
             ->join('sgwd_products', 'sgwd_products.prod_id', '=', 'sgwd_product-detail.prod_id')
             ->where('sgwd_product-detail.prod_id', $id_prod)
             ->orderBy('sgwd_product-detail.prod_detail_id', 'desc')->get();
-        return view('backend.showdetailproduct', $data);
+        return view('backend.product.showdetailproduct', $data);
     }
 
     public function getAddDetailProduct($id_prod)
     {
         $data['id'] = $id_prod;
-        return view('backend.add-detailproduct', $data);
+        return view('backend.product.add-detailproduct', $data);
     }
 
     public function postAddDetailProduct(AddProductRequest $request, $id_prod)
@@ -114,7 +114,7 @@ class ProductController extends Controller
     {
         $data['id'] = $id_prod;
         $data['prod_detail'] = Product_Detail::find($id_prod_detail);
-        return view('backend.edit-detailproduct', $data);
+        return view('backend.product.edit-detailproduct', $data);
     }
 
     public function postEditDetailProduct(Request $request, $id_prod_detail, $id_prod)

@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'FrontendController@getHome');
+Route::get('product', 'FrontendController@getHome');
 
-Route::get('category/{id}.html', 'FrontendController@getCategory');
+Route::get('category/{id}.html','FrontendController@getCategory');
 
 Route::get('test', function () {
     return view('frontend.product-details');
@@ -65,16 +65,6 @@ Route::group(['namespace' => 'Admin'], function () {
 
                 Route::get('delete/{id_prod_detail}', 'ProductController@getDeleteDetailProduct');
             });
-        });
-
-        Route::group(['prefix' => 'category'], function () {
-            Route::get('/', 'CategoryController@getCategory');
-            Route::post('/', 'CategoryController@postCategory');
-
-            Route::get('edit/{id}', 'CategoryController@getEditCategory');
-            Route::post('edit/{id}', 'CategoryController@postEditCategory');
-
-            Route::get('delete/{id}', 'CategoryController@getDeleteCategory');
         });
     });
 });

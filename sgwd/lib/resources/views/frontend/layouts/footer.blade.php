@@ -1,4 +1,5 @@
 <div id="footer">
+
     <div class="cont">
         <div class="column_company">
             <div class="con">
@@ -162,7 +163,6 @@
         <div class="both"></div>
     </div>
 </div>
-<a href="#Totop" id="toppage"><img src='catalog/view/theme/default/image/top_scoll.png' alt='' style='border:0px;'/></a>
 <script type='text/javascript'>
     //<![CDATA[
     $(function () {
@@ -187,6 +187,8 @@
     $(function () {
         $("#toppage").scrollToTop();
     });//]]></script>
+
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138307260-1"></script>
 <script>
@@ -200,6 +202,10 @@
 
     gtag('config', 'UA-138307260-1');
 </script>
+
+
+</div>
+
 <div class="call_info" style="display: none;">
     Tổng đài tư vấn
 </div>
